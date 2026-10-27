@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Eight free freezes and alerts that close the identity-theft gaps a credit freeze misses. No sign-up, nothing leaves your device.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%231f5f6b%27/%3E%3Cpath d=%27M10 15v-3a6 6 0 0 1 12 0v3%27 stroke=%27white%27 stroke-width=%273%27 fill=%27none%27/%3E%3Crect x=%278%27 y=%2715%27 width=%2716%27 height=%2711%27 rx=%272%27 fill=%27white%27/%3E%3C/svg%3E">
+<title>Identity Lockdown Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bitter:wght@600;700&display=swap">
+<style>
+/* Layout: one readable column of numbered file-folder steps, progress meter up top, built for large type and older eyes */
+:root {
+  --bg: #f4f6f5;
+  --paper: #ffffff;
+  --ink: #1b2a2f;
+  --muted: #4d5f64;
+  --line: #d3dcda;
+  --accent: #1f5f6b;
+  --accent-soft: #e1eeef;
+  --done: #2f6b3a;
+  --done-soft: #e3f0e4;
+  --warn: #8a4b12;
+  --warn-soft: #fbefe2;
+  --font-display: "Bitter", Georgia, "Times New Roman", serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121a1c; --paper: #1a2427; --ink: #e6eeee; --muted: #a9b9bb; --line: #2e3c40;
+    --accent: #7cc4cf; --accent-soft: #1f3438; --done: #8fd19a; --done-soft: #1f3324;
+    --warn: #f0b77a; --warn-soft: #3a2a19; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121a1c; --paper: #1a2427; --ink: #e6eeee; --muted: #a9b9bb; --line: #2e3c40;
+  --accent: #7cc4cf; --accent-soft: #1f3438; --done: #8fd19a; --done-soft: #1f3324;
+  --warn: #f0b77a; --warn-soft: #3a2a19; color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 18px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 720px; margin: 0 auto; padding-block: 40px 64px; display: grid; gap: 28px; }
+h1, h2 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.35rem; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, input:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.lead { display: grid; gap: 12px; }
+.lead p { color: var(--muted); max-width: 62ch; }
+.eyebrow { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+
+.meter { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; }
+.meter-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.meter-count { font-family: var(--font-display); font-size: 1.4rem; font-variant-numeric: tabular-nums; }
+.track { height: 14px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; }
+.fill { height: 100%; width: 0; background: var(--done); border-radius: 99px; transition: width .3s ease; }
+.meter small { color: var(--muted); font-size: .9rem; }
+
+.note { background: var(--warn-soft); color: var(--ink); border-radius: 12px; padding: 16px 20px; display: grid; gap: 6px; }
+.note strong { color: var(--warn); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; counter-reset: step; }
+.step { background: var(--paper); border: 1px solid var(--line); border-radius: 4px 12px 12px 12px; position: relative; counter-increment: step; }
+.step::before {
+  content: "Step " counter(step);
+  position: absolute; top: -14px; left: -1px;
+  background: var(--accent); color: var(--paper);
+  font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 12px; border-radius: 6px 6px 0 0;
+}
+.step.is-done { border-color: var(--done); }
+.step.is-done::before { background: var(--done); content: "Step " counter(step) " · Done"; }
+.step-inner { padding: 22px 20px 20px; display: grid; gap: 12px; }
+.why { color: var(--muted); }
+.how { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.links a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 6px 14px;
+  border: 1.5px solid var(--accent); border-radius: 8px; text-decoration: none; font-weight: 700;
+}
+.links a:hover { background: var(--accent-soft); }
+.phone { font-variant-numeric: tabular-nums; font-weight: 700; user-select: all; white-space: nowrap; }
+.tip { font-size: .95rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+.check { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; background: var(--accent-soft); cursor: pointer; font-weight: 700; width: fit-content; max-width: 100%; }
+.step.is-done .check { background: var(--done-soft); color: var(--done); }
+.check input { width: 26px; height: 26px; accent-color: var(--done); flex: none; margin: 0; }
+
+.help { background: var(--accent-soft); border-radius: 12px; padding: 20px; display: grid; gap: 10px; }
+.reset { justify-self: start; background: none; border: 1px solid var(--line); color: var(--muted); font: inherit; font-size: .9rem; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
+footer { color: var(--muted); font-size: .9rem; display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 18px; }
+@media (max-width: 480px) { body { font-size: 17px; } h1 { font-size: 1.75rem; } }
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="lead">
+    <span class="eyebrow">Free · no sign-up · nothing leaves your device</span>
+    <h1>Identity Lockdown Checklist</h1>
+    <p>A credit freeze at the three big bureaus is a good start, but it doesn't cover everything. Thieves can open bank accounts, phone and utility service, or file a tax return in your name through other doors. These eight steps close the main ones. Each is free and takes about 10–20 minutes.</p>
+  </header>
+
+  <section class="meter" aria-live="polite">
+    <div class="meter-top">
+      <span class="meter-count" id="count">0 of 8 done</span>
+      <small id="saved">Your checkmarks stay on this device only.</small>
+    </div>
+    <div class="track" role="progressbar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="bar"><div class="fill" id="fill"></div></div>
+  </section>
+
+  <div class="note">
+    <strong>Before you start</strong>
+    <p>Type each website address yourself or use the buttons below. Never use a link or phone number from a text, email or caller. When a site gives you a PIN or password for your freeze, write it down on paper and keep it with your important papers.</p>
+  </div>
+
+  <ol class="steps">
+    <li class="step" data-id="ssa">
+      <div class="step-inner">
+        <h2>Claim your my Social Security account</h2>
+        <p class="why">Only one online account is allowed per Social Security number. Opening yours first keeps a thief from opening one and redirecting your benefits.</p>
+        <ul class="how">
+          <li>Create the account at ssa.gov and verify your identity.</li>
+          <li>Review your earnings record. Pay you never earned can be a sign someone is working under your number.</li>
+        </ul>
+        <div class="links"><a href="https://www.ssa.gov/myaccount/" target="_blank" rel="noopener">Go to ssa.gov/myaccount</a></div>
+        <label class="check"><input type="checkbox" id="chk-ssa"> I've done this</label>
+      </div>
+    </li>
+
+    <li class="step" data-id="bureaus">
+      <div class="step-inner">
+        <h2>Freeze your credit at all three bureaus</h2>
+        <p class="why">Stops new credit cards and loans in your name. Freezes are free by federal law, and they don't affect your current cards or your credit score.</p>
+        <ul class="how">
+          <li>Do all three. A freeze at one bureau doesn't carry over to the others.</li>
+          <li>If you apply for new credit later, lift the freeze for a few days, then it goes back on.</li>
+        </ul>
+        <div class="links">
+          <a href="https://www.equifax.com/personal/credit-report-services/credit-freeze/" target="_blank" rel="noopener">Equifax</a>
+          <a href="https://www.experian.com/freeze/center.html" target="_blank" rel="noopener">Experian</a>
+          <a href="https://www.transunion.com/credit-freeze" target="_blank" rel="noopener">TransUnion</a>
+        </div>
+        <label class="check"><input type="checkbox" id="chk-bureaus"> I've done all three</label>
+      </div>
+    </li>
+
+    <li class="step" data-id="chex">
+      <div class="step-inner">
+        <h2>Freeze your ChexSystems report</h2>
+        <p class="why">Banks check ChexSystems when someone opens a checking or savings account. A credit freeze doesn't cover this. The freeze is free.</p>
+        <ul class="how">
+          <li>Create a ChexSystems account, then choose "Security Freeze." You'll need your driver's license or state ID number.</li>
+          <li>Keep the PIN they send. Lift the freeze before you open a new bank account yourself.</li>
+        </ul>
+        <div class="links"><a href="https://www.chexsystems.com/security-freeze/place-freeze" target="_blank" rel="noopener">ChexSystems freeze</a></div>
+        <label class="check"><input type="checkbox" id="chk-chex"> I've done this</label>
+      </div>
+    </li>
+
+    <li class="step" data-id="nctue">
+      <div class="step-inner">
+        <h2>Freeze your NCTUE report</h2>
+        <p class="why">Phone, cable, home security and utility companies check NCTUE before opening service. A freeze stops someone setting up service in your name. It's free.</p>
+        <ul class="how">
+          <li>Freeze online, or call <span class="phone">866-349-5355</span>.</li>
+          <li>Save the confirmation page online. It has your PIN. A lift can take up to three business days.</li>
+        </ul>
+        <div class="links"><a href="https://nctue.com/consumer/" target="_blank" rel="noopener">NCTUE freeze</a></div>
+        <label class="check"><input type="checkbox" id="chk-nctue"> I've done this</label>
+      </div>
+    </li>
+
+    <li class="step" data-id="lexis">
+      <div class="step-inner">
+        <h2>Freeze your LexisNexis report</h2>
+        <p class="why">Many lenders and insurers use LexisNexis to check identity and risk. This freeze is separate from the big three bureaus, and it's free.</p>
+        <ul class="how">
+          <li>Use the online form, or call <span class="phone">1-800-456-1244</span>.</li>
+          <li>They confirm by mail once the freeze is in place.</li>
+        </ul>
+        <div class="links"><a href="https://consumer.risk.lexisnexis.com/freeze" target="_blank" rel="noopener">LexisNexis freeze</a></div>
+        <label class="check"><input type="checkbox" id="chk-lexis"> I've done this</label>
+      </div>
+    </li>
+
+    <li class="step" data-id="irs">
+      <div class="step-inner">
+        <h2>Get an IRS Identity Protection PIN</h2>
+        <p class="why">A 6-digit PIN that must be on any federal tax return filed with your Social Security number. Without it, a fake return is rejected.</p>
+        <ul class="how">
+          <li>Fastest: request it in your IRS online account. If you can't do that, the IRS also offers a mailed form or an in-person appointment.</li>
+          <li>You get a new PIN every year. Give it only to whoever files your taxes.</li>
+          <li>The IRS will never call, text or email asking for it.</li>
+        </ul>
+        <div class="links"><a href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank" rel="noopener">IRS IP PIN page</a></div>
+        <label class="check"><input type="checkbox" id="chk-irs"> I've done this</label>
+      </div>
+    </li>
+
+    <li class="step" data-id="alerts">
+      <div class="step-inner">
+        <h2>Turn on bank and card alerts</h2>
+        <p class="why">Freezes stop new accounts. Alerts catch problems on the accounts you already have, often the same day.</p>
+        <ul class="how">
+          <li>In each bank and card app, turn on alerts for withdrawals, transfers, new payees and changes to your contact info.</li>
+          <li>Set a low dollar amount for purchase alerts so small test charges show up.</li>
+          <li>If you're not comfortable with the app, ask your bank branch to set them up with you.</li>
+        </ul>
+        <label class="check"><input type="checkbox" id="chk-alerts"> I've done this</label>
+      </div>
+    </li>
+
+    <li class="step" data-id="pins">
+      <div class="step-inner">
+        <h2>Keep your PINs in one safe place</h2>
+        <p class="why">You'll need each PIN to lift a freeze later. Losing them means slow replacement by mail.</p>
+        <ul class="how">
+          <li>Write each one on paper: which company, the PIN, and the date.</li>
+          <li>Keep it with your will or other important papers, and tell one trusted family member where it is.</li>
+        </ul>
+        <p class="tip">Don't keep these in an email or text to yourself.</p>
+        <label class="check"><input type="checkbox" id="chk-pins"> I've done this</label>
+      </div>
+    </li>
+  </ol>
+
+  <section class="help" aria-labelledby="help-h">
+    <h2 id="help-h">Got a call, text or email that seems off?</h2>
+    <p>Don't reply, click or call back the number it gives. Then use one of these:</p>
+    <ul class="how">
+      <li><strong>Check it with your bank:</strong> call the number on the back of your card.</li>
+      <li><strong>Talk to a person for free:</strong> AARP Fraud Watch Helpline, <span class="phone">877-908-3360</span>, weekdays 8 a.m.–8 p.m. Eastern. Open to anyone, member or not.</li>
+      <li><strong>Report it:</strong> <a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener">reportfraud.ftc.gov</a>. If you lost money, also report it at <a href="https://www.ic3.gov/" target="_blank" rel="noopener">ic3.gov</a>.</li>
+    </ul>
+  </section>
+
+  <button class="reset" id="reset" type="button">Clear my checkmarks</button>
+
+  <footer>
+    <p>Links and phone numbers checked October 27, 2026. Companies change their sites, so if a link stops working, search the company's name plus "security freeze."</p>
+    <p>Open source on <a href="https://github.com/jdelewese-ops/lockdown-guide">GitHub</a>. No cookies, no analytics, no accounts.</p>
+    <p>This checklist gives general information and isn't legal or financial advice. It isn't connected to any agency or company listed.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var KEY = "identity-lockdown-v1";
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+  var total = steps.length;
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function render() {
+    var done = 0;
+    steps.forEach(function (s) {
+      var id = s.getAttribute("data-id");
+      var box = s.querySelector("input[type=checkbox]");
+      var on = !!state[id];
+      box.checked = on;
+      s.classList.toggle("is-done", on);
+      if (on) done++;
+    });
+    document.getElementById("count").textContent = done === total ? "All 8 done. You're locked down." : done + " of " + total + " done";
+    document.getElementById("fill").style.width = (done / total * 100) + "%";
+    document.getElementById("bar").setAttribute("aria-valuenow", done);
+  }
+
+  steps.forEach(function (s) {
+    var id = s.getAttribute("data-id");
+    s.querySelector("input[type=checkbox]").addEventListener("change", function (e) {
+      state[id] = e.target.checked; save(); render();
+    });
+  });
+
+  var resetBtn = document.getElementById("reset");
+  var armed = false;
+  resetBtn.addEventListener("click", function () {
+    if (!armed) { armed = true; resetBtn.textContent = "Tap again to clear all"; setTimeout(function () { armed = false; resetBtn.textContent = "Clear my checkmarks"; }, 4000); return; }
+    state = {}; save(); render(); armed = false; resetBtn.textContent = "Clear my checkmarks";
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
